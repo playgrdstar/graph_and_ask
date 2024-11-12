@@ -1,7 +1,7 @@
 # Graph & Ask
 
 ## Description
-`Graph & Ask` is a monorepo project that consists of two main components: `kg_frontend` and `kg_backend`. 
+`Graph & Ask` is a monorepo for a knowledge graph and LLM/Gen AI project that consists of two main components: `kg_frontend` and `kg_backend`. 
 - The frontend is a React-based application designed to visualize and interact with knowledge graphs generated from various data sources. 
 - The backend is a Django application that provides the necessary APIs to support the frontend functionalities.
 
@@ -15,8 +15,8 @@ cd kg_monorepo
 
 ## Basic Features and How To Use
 - Enter ticker or tickers, separated by commas, in the input field. Maximum of 3 tickers allowed. Window is the number of days to fetch news articles for, and limit is the number of news articles to fetch for each ticker for each day.  A maximum of 5 days and 3 news articles per day is allowed to limit the number of requests to the news API.
-- Click the "Generate" button in the section above the input fields. The news articles are fetched from the API, processed, and a knowledge graph is generated for each ticker. The knowledge graphs are streamed to the main centre panel, while the articles are displayed in the side panel on the right.
-- Click the "Enrich" button. The knowledge graphs are enriched with semantic information and combined. The combined and enriched knowledge graph is displayed in the main centre panel, while the overall summary of the enriched knowledge graph is displayed in the side panel on the right. Note that this step may take some time if there are many nodes in the knowledge graph. After this step, the context nodes section at the bottom will display all the nodes. Hover over these chips to see the node type and summary. Each node will have the following information: i) a network embedding, ii) a text embedding, and iii) a community assignment after this step.
+- Click the "Generate" button in the section above the input fields. The news articles are fetched from the API, processed, and a knowledge graph is generated for each ticker with an LLM. The knowledge graphs are streamed to the main centre panel, while the articles are displayed in the side panel on the right.
+- Click the "Enrich" button. The knowledge graphs are enriched with semantic information with both network analytics and LLMs and combined. The combined and enriched knowledge graph is displayed in the main centre panel, while the overall summary of the enriched knowledge graph is displayed in the side panel on the right. Note that this step may take some time if there are many nodes in the knowledge graph. After this step, the context nodes section at the bottom will display all the nodes. Hover over these chips to see the node type and summary. Each node will have the following information: i) a network embedding, ii) a text embedding, and iii) a community assignment after this step.
 - For the query step, the context information is dependent on the nodes in the knowledge graph. If no nodes are selected, the default is that all nodes will be in the context, and the query will be answered based on the entire knowledge graph. The backend will filter the most relevant top-N nodes based on the highest semantic similarity to the query based on the network or text embeddings; or iii) in the same community. Otherwise, the query will be answered based on the subset of selected nodes and their connected nodes, as well as  top-N nodes based on the highest semantic similarity to the query based on the network or text embeddings; or iii) in the same community. 
 - Click the "Query" button. The answer to the query will then be displayed in the side panel on the right, along with the evidence used to generate the answer.
 
@@ -73,6 +73,14 @@ FMP_API_KEY = <From https://site.financialmodelingprep.com/>
 HF_READ_API_KEY = <From https://huggingface.co/settings/tokens>
 OPENAI_API_KEY = <From https://platform.openai.com/api-keys>
 ```
+
+To-Dos:
+- Add background tasks
+- Add more tests
+- Improve UI/UX
+- Shift from cache to database
+- Explore other LLMs for structured outputs, KG generation, and enrichment
+
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
