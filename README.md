@@ -48,10 +48,13 @@ cd kg_monorepo
 
 ### What is used for kg_backend
 - Django
-- Django REST Framework
-- PostgreSQL (or any other database as configured)
-- Django Ninja for API development
-- CORS headers for cross-origin requests
+- Django Ninja 
+- fastnode2vec
+- leidenalg
+- networkx
+- igraph
+- sklearn
+- pydantic
 
 ### Key Files
 
